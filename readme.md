@@ -1,4 +1,4 @@
-<h1>QCSlider</h1>,
+<h1>QCSlider</h1>
 
 It is a plugin which contains compatible code for viewing images, youtube videos and html5 videos
 <strong>Use</strong>
