@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>QCSlider</title>
+	<meta name="description" content="QuéCódigo Web, diseño y desarrollo web para empresas Pymes, independientes o artistas, una web que espera cambiar el mundo del internet">
+	<meta name="keywords" content="QuéCódigo, Que Codigo, diseño web, desarrollo web, blog de que codigo, ">
+	<meta name="robots" content="Index/follow">
+	<meta name="subjetc" content="QuéCódigo, más que una web">
+	<meta name="language" content="es_ES">
+	<meta name="revisit-after" content="7">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-132472043-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-132472043-1');
+	</script>
+	<meta property="og:url" content="https://www.plugins.quecodigo.com/slider/" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="QCSlider || QueCodigo.com" />
+	<meta property="og:description" content="QuéCódigo Web, diseño y desarrollo web para empresas Pymes, independientes o artistas, una web que espera cambiar el mundo del internet" />
+	<meta property="og:image" content="https://www.quecodigo.com/img/og_image.png" />
+	
+	<link rel="stylesheet" type="text/css" href="css/qc.slider.css?v1.0">
+	<script type="text/javascript" src="https://code.jquery.com/jquery.js"></script>
+	<script type="text/javascript" src="qcslider.jquery.js?v1.4.1"></script>
+	<script type="text/javascript">
+		$(document).ready(function($){
+			$("#slider").QCslider({duration: 7000});
+		});
+	</script>
+</head>
+<body>
+	<section class="slide">
+		<div class="slider-container">
+			<ul class="slider-wrapper" id="slider">
+				<li class="slide-current">
+					<img src="https://www.quecodigo.com/img/og_image.png"/>
+					<div class="capa"></div>
+				</li>
+				<li class="video" data-type="video" data-video="https://www.quecodigo.com/video/ejemplo.mp4" data-muted="true"></li>
+				<li class="video" data-type="youtube" data-video="c9g4SK-iYKM" data-muted="true"></li>
+				<li class="video" data-type="youtube" data-video="AcixoJTGejA" data-muted="true"></li>
+				<li class="video" data-type="video" data-video="https://www.quecodigo.com/video/plugin_qcslider.mp4" data-muted="false"></li>
+				<li class="video" data-type="youtube" data-video="sciFPlDs9XI" data-muted="true"></li>
+			</ul>
+			<ul class="slider-controls" id="slider-controls"></ul>
+			<div class="tempo-bar" id="barra"></div>
+		</div>
+	</section>
+</body>
+</html>
