@@ -30,7 +30,7 @@
 			duration: 8000
 		}
 
-		console.log("QCSlider V1.4");
+		console.log("QCSlider V1.4.2");
 		settings = jQuery.extend(options_default, options_user);
 
 		init();
