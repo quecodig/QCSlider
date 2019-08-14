@@ -1,4 +1,5 @@
 :root {
+  --opacity-slide: 0.5;
   --height-slider: 500px;
   --color-slider: #005673;
   --height-responsive: 200px; }
@@ -72,6 +73,30 @@ section.slide {
           display: block;
           position: absolute;
           background: rgba(0, 0, 0, 0.1); }
+    section.slide .slider-container .drt-control {
+      top: 40%;
+      z-index: 90;
+      color: white;
+      padding: 30px;
+      cursor: pointer;
+      font-size: 22px;
+      position: absolute;
+      -webkit-transition: all 0.5s;
+      -o-transition: all 0.5s;
+      transition: all 0.5s;
+      background: rgba(0, 0, 0, var(--opacity-slide)); }
+      @media only screen and (max-width: 766px) {
+        section.slide .slider-container .drt-control {
+          padding: 20px;
+          font-size: 20px; } }
+      section.slide .slider-container .drt-control:hover {
+        background: black; }
+      section.slide .slider-container .drt-control.control-left {
+        left: -20px;
+        border-radius: 0px 50px 50px 0px; }
+      section.slide .slider-container .drt-control.control-right {
+        right: -20px;
+        border-radius: 50px 0 0 50px; }
     section.slide .slider-container .slider-controls {
       z-index: 90;
       width: 100%;
@@ -84,30 +109,6 @@ section.slide {
       background: rgba(0, 0, 0, 0.3);
       -webkit-box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
       box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2); }
-      section.slide .slider-container .slider-controls .drt-control {
-        top: 40%;
-        z-index: 90;
-        color: white;
-        padding: 30px;
-        cursor: pointer;
-        font-size: 22px;
-        position: absolute;
-        -webkit-transition: all 0.5s;
-        -o-transition: all 0.5s;
-        transition: all 0.5s;
-        background: rgba(0, 0, 0, var(--opacity-slide)); }
-        @media only screen and (max-width: 766px) {
-          section.slide .slider-container .slider-controls .drt-control {
-            padding: 20px;
-            font-size: 20px; } }
-        section.slide .slider-container .slider-controls .drt-control:hover {
-          background: black; }
-        section.slide .slider-container .slider-controls .drt-control.control-left {
-          left: -20px;
-          border-radius: 0px 50px 50px 0px; }
-        section.slide .slider-container .slider-controls .drt-control.control-right {
-          right: -20px;
-          border-radius: 50px 0 0 50px; }
       @media only screen and (max-width: 766px) {
         section.slide .slider-container .slider-controls {
           background: black; } }
