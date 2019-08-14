@@ -1,7 +1,7 @@
 /**
 @Author: Edinson Tique
 @Name: QCSlider Pluggin
-@VersiÃ³n: 1.4.2
+@Version: 1.4.2
 @Year: 2018
 @Contact: www.fb.com/QueCodigoPG
 @Libraries: jQuery
