@@ -1,7 +1,7 @@
 /**
 @Author: Edinson Tique
 @Name: QCSlider Pluggin
-@Versión: 1.4
+@VersiÃ³n: 1.4.2
 @Year: 2018
 @Contact: www.fb.com/QueCodigoPG
 @Libraries: jQuery
@@ -62,6 +62,12 @@
 				if (currentSlider !== $this.index()) {
 					changePanel($this.index());
 				};
+			});
+			$('#rht-control').on('click', function (e){
+				changePanel(nextSlider);
+			});
+			$('#lft-control').on('click', function (e){
+				changePanel(currentSlider - 1);
 			});
 		}
 
