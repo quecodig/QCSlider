@@ -6,7 +6,7 @@ It is a plugin which contains compatible code for viewing images, youtube videos
 https://code.jquery.com/jquery.js
 
 * Include JavaScript and CSS of QCSlider
-```css/qc.slider.css?v1.0``` and ```qcslider.jquery.js?v1.4.1```
+```css/qc.slider.css?v1.0``` and ```qcslider.jquery.js?v1.4.2```
 * HTML necessary for the operation
 ```html
 <section class="slide">
@@ -20,6 +20,8 @@ https://code.jquery.com/jquery.js
 			<li class="video" data-type="video" data-video="https://www.quecodigo.com/video/plugin_qcslider.mp4" data-muted="false"></li><!--HTML for HTML5 video-->
 			<li class="video" data-type="youtube"data-video="sciFPlDs9XI" data-muted="true"></li><!--Code for youtube video-->
 		</ul>
+		<div class="drt-control control-left" id="lft-control"><i class="qicon-chevron-left"></i></div>
+          	<div class="drt-control control-right" id="rht-control"><i class="qicon-chevron-right"></i></div>
 		<ul class="slider-controls" id="slider-controls"></ul>
 		<div class="tempo-bar" id="bar"></div>
 	</div>
