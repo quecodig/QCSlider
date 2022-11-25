@@ -23,7 +23,7 @@ https://code.jquery.com/jquery.js
 		<div class="drt-control control-left" id="lft-control"><</div>
           	<div class="drt-control control-right" id="rht-control">></div>
 		<ul class="slider-controls" id="slider-controls"></ul>
-		<div class="tempo-bar" id="bar"></div>
+		<div class="tempo-bar" id="barra"></div>
 	</div>
 </section>
 ```
