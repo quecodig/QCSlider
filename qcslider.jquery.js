@@ -1,7 +1,7 @@
 /**
 @Author: Edinson Tique
 @Name: QCSlider Pluggin
-@Version: 1.5.0
+@Version: 1.5.1
 @Year: 2018
 @Contact: www.fb.com/QueCodigoPG
 @Libraries: jQuery
@@ -134,10 +134,10 @@ window.onYouTubeIframeAPIReady = function () {
 					function onPlayerStateChange(event) {
 						let timeCurrent;
 						//$('#barra').css("width", "100%");
-						if(event.data === YT.PlayerState.PLAYING) { 
+						if (typeof YT !== "undefined" && event.data === YT.PlayerState.PLAYING) { 
 							timeCurrent = setInterval(getProgress,50);
 						}
-						if (event.data == YT.PlayerState.ENDED){
+						if (typeof YT !== "undefined" && event.data == YT.PlayerState.ENDED) {
 							clearInterval(timeCurrent);
 							vel.html('<div class="include"><div id="'+vidp+'"></div></div>');
 							changePanel(nextSlider);
