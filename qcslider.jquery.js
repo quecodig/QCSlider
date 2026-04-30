@@ -1,11 +1,18 @@
 /**
 @Author: Edinson Tique
 @Name: QCSlider Pluggin
-@Version: 1.4.3
+@Version: 1.5.0
 @Year: 2018
 @Contact: www.fb.com/QueCodigoPG
 @Libraries: jQuery
 **/
+var YT_READY = false;
+
+// 🔥 YouTube API Ready
+window.onYouTubeIframeAPIReady = function () {
+    YT_READY = true;
+};
+
 (function ($){
 	jQuery.fn.QCslider = function(options_user) {
 		// Variables Necesarias
@@ -38,13 +45,16 @@
 		// Initialize
 		function init() {
 			console.log("QCSlider Load");
+
+			if (!document.getElementById("yt-api-script")) {
+                var tag = document.createElement('script');
+                tag.id = "yt-api-script";
+                tag.src = "https://www.youtube.com/iframe_api";
+                var firstScriptTag = document.getElementsByTagName('script')[0];
+                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            }
+			
 			var output = '',
-			tag = document.createElement('script');
-
-			tag.src = "https://www.youtube.com/iframe_api";
-			var firstScriptTag = document.getElementsByTagName('script')[0];
-			firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
 			// Activamos nuestro slider
 			SliderInit();
 
@@ -84,13 +94,16 @@
 			}else{
 				var vurl = vel.attr("data-video"),
 					vidp = "player"+currentSlider,
-					vmut = vel.attr("data-muted"),
+					vmut = vel.attr("data-muted") === "true",
 					vtyp = vel.attr("data-type"),
 					urla = 'https://www.youtube.com';
 
 				if(vtyp === "youtube"){
+					if (!YT_READY || typeof YT === "undefined" || typeof YT.Player === "undefined") {
+				        setTimeout(SliderInit, 200);
+				        return;
+				    }
 					vel.html('<div class="include"><div id="'+vidp+'"></div></div>');
-					if(vmut === "true"){ vmut=1 }else{ vmut=0 }
 					player = new YT.Player(vidp, {
 						videoId: vurl,
 						playerVars: { 
@@ -107,7 +120,7 @@
 							showinfo: 0,
 							autoplay: 1,
 							controls: 0,
-							mute: vmut,
+							mute: vmut ? 1 : 0,
 							border: 0,
 							html5: 1,
 							rel : 0,
@@ -118,9 +131,6 @@
 							'onStateChange': onPlayerStateChange,
 						}
 					});
-					var reproW = pb.items.panel.eq(currentSlider).width();
-					var reproH = pb.items.panel.eq(currentSlider).height();
-					player.setSize({"width": reproW, "height": reproH});
 					function onPlayerStateChange(event) {
 						let timeCurrent;
 						//$('#barra').css("width", "100%");
@@ -134,36 +144,39 @@
 						}
 					}
 					function getProgress(){
-						var tAc = player.playerInfo.currentTime,
-							tTo = player.playerInfo.duration,
-							poc = tAc/tTo*100;
-						$('#barra').width(poc+'%');
+					    var tAc = player.getCurrentTime(),
+					        tTo = player.getDuration(),
+					        poc = tAc/tTo*100;
+					    $('#barra').width(poc+'%');
 					}
 					function onPlayerReady(event){
-						if(vmut === "true"){
+						var reproW = pb.items.panel.eq(currentSlider).width();
+					    var reproH = pb.items.panel.eq(currentSlider).height();
+					    event.target.setSize(reproW, reproH);
+						if(vmut){
 							event.target.mute();
 							event.target.setVolume(0);
 						}
 						event.target.playVideo();
 					}
 				}else if(vtyp === "video"){
-					if(vmut === "true"){
-						vel.html('<div class="include"><video src="'+vurl+'" preload="auto" muted autoplay="true" poster="" id="'+vidp+'"></video></div>');
-					}else{
-						vel.html('<div class="include"><video src="'+vurl+'" preload="auto" autoplay="true" poster="" id="'+vidp+'"></video></div>');
-					}
-					var dursecs;
+					if(vmut){
+				        vel.html('<div class="include"><video src="'+vurl+'" preload="auto" muted autoplay id="'+vidp+'"></video></div>');
+				    }else{
+				        vel.html('<div class="include"><video src="'+vurl+'" preload="auto" autoplay id="'+vidp+'"></video></div>');
+				    }
 					$("#"+vidp).bind('timeupdate', function(){
-						var tAc = $("#"+vidp)[0].currentTime,
-							tTo = $("#"+vidp)[0].duration,
-							poc = tAc/tTo*100;
-						$('#barra').width(poc+'%');
-					});
-					$("#"+vidp).on('ended', function(){
-						vel.html(' ');
-						$("#"+vidp).unbind('timeupdate');
-						changePanel(nextSlider);
-					});
+				        var tAc = this.currentTime,
+				            tTo = this.duration,
+				            poc = tAc/tTo*100;
+				        $('#barra').width(poc+'%');
+				    });
+				
+				    $("#"+vidp).on('ended', function(){
+				        vel.html(' ');
+				        $("#"+vidp).unbind('timeupdate');
+				        changePanel(nextSlider);
+				    });
 				}
 			}
 		}
