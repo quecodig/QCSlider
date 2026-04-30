@@ -1,7 +1,7 @@
 /**
 @Author: Edinson Tique
 @Name: QCSlider Pluggin
-@Version: 1.5.1.1
+@Version: 1.5.1.2
 @Year: 2018
 @Contact: www.fb.com/QueCodigoPG
 @Libraries: jQuery
@@ -30,7 +30,7 @@ window.onYouTubeIframeAPIReady = function () {
 			panel: pb.el.find('li')
 		}
 		
-		lengthSlider = pb.items.panel.length;
+		var lengthSlider = pb.items.panel.length;
 
 		options_default = {
 			start: 0,
@@ -38,7 +38,7 @@ window.onYouTubeIframeAPIReady = function () {
 		}
 
 		console.log("QCSlider V1.4.3");
-		settings = jQuery.extend(options_default, options_user);
+		var settings = jQuery.extend(options_default, options_user);
 
 		init();
 
