@@ -1,7 +1,7 @@
 /**
 @Author: Edinson Tique
 @Name: QCSlider Pluggin
-@Version: 1.5.1
+@Version: 1.5.1.1
 @Year: 2018
 @Contact: www.fb.com/QueCodigoPG
 @Libraries: jQuery
@@ -54,7 +54,7 @@ window.onYouTubeIframeAPIReady = function () {
                 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
             }
 			
-			var output = '',
+			var output = '';
 			// Activamos nuestro slider
 			SliderInit();
 
